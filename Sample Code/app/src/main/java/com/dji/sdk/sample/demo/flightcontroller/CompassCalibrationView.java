@@ -60,6 +60,12 @@ public class CompassCalibrationView extends BaseThreeBtnView {
         if(ModuleVerificationUtil.isFlightControllerAvailable()) {
             ((Aircraft) DJISampleApplication.getProductInstance()).getFlightController().setStateCallback(null);
         }
+
+        try {
+            DJISampleApplication.getProductInstance().getBattery().setStateCallback(null);
+        } catch (Exception ignored) {
+
+        }
     }
 
     @Override

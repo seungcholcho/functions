@@ -17,6 +17,7 @@ import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
@@ -64,6 +65,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onDestroy() {
         DJISampleApplication.getEventBus().unregister(this);
+        Toast.makeText(this, "hello world!", Toast.LENGTH_SHORT).show();
         super.onDestroy();
     }
 

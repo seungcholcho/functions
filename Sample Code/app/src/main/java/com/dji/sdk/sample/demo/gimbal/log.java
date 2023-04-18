@@ -1,4 +1,4 @@
-package com.dji.sdk.sample.internal.view;
+package com.dji.sdk.sample.demo.gimbal;
 
 import android.app.Service;
 import android.content.Context;
@@ -9,22 +9,20 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 
 import com.dji.sdk.sample.R;
+import com.dji.sdk.sample.internal.view.PresentableView;
 
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.util.Date;
 
-/**
- * Created by dji on 15/12/28.
- */
-public abstract class BasePushDataView extends RelativeLayout implements PresentableView {
+import dji.common.flightcontroller.Attitude;
+import dji.common.flightcontroller.GPSSignalLevel;
 
-    protected StringBuffer stringBuffer;
+public abstract class log extends RelativeLayout implements PresentableView {
     protected StringBuffer fullLog;
-
     protected TextView textViewOSD;
 
-
-    public BasePushDataView(Context context) {
+    public log(Context context) {
         super(context);
         init(context);
     }
@@ -32,7 +30,6 @@ public abstract class BasePushDataView extends RelativeLayout implements Present
     @Override
     protected void onAttachedToWindow() {
         super.onAttachedToWindow();
-        stringBuffer = new StringBuffer();
         fullLog = new StringBuffer();
     }
 
@@ -48,16 +45,32 @@ public abstract class BasePushDataView extends RelativeLayout implements Present
 
         layoutInflater.inflate(R.layout.view_show_osd, this, true);
 
-        textViewOSD = (TextView) findViewById(R.id.text_show_osd);
+        textViewOSD = (TextView) findViewById(R.id.fullLog);
         textViewOSD.setText(context.getString(getDescription()));
+
     }
 
-    protected void showStringBufferResult() {
+    protected void  writeToFile(Context context, String filename, StringBuffer content) {
+        String data = content.toString();
+        FileOutputStream outputStream;
+        try {
+            outputStream = context.openFileOutput(filename, Context.MODE_PRIVATE);
+            outputStream.write(data.getBytes());
+            outputStream.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    protected void showStringBufferResult2() {
         post(new Runnable() {
             @Override
             public void run() {;
-                textViewOSD.setText(stringBuffer.toString());
+                textViewOSD.setText(fullLog.toString());
             }
         });
     }
+
+
 }
+

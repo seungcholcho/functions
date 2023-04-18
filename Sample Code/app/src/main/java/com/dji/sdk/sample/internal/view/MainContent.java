@@ -36,6 +36,8 @@ import com.dji.sdk.sample.internal.utils.ToastUtils;
 import com.squareup.otto.Subscribe;
 
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicBoolean;
 
@@ -89,7 +91,6 @@ public class MainContent extends RelativeLayout {
     private int lastProcess = -1;
     private Handler mHander = new Handler();
     private BaseComponent.ComponentListener mDJIComponentListener = new BaseComponent.ComponentListener() {
-
         @Override
         public void onConnectivityChange(boolean isConnected) {
             Log.d(TAG, "onComponentConnectivityChanged: " + isConnected);
@@ -579,6 +580,7 @@ public class MainContent extends RelativeLayout {
                                     ToastUtils.setResultToToast(mContext.getString(R.string.sdk_registration_message) + djiError.getDescription());
                                 }
                                 Log.v(TAG, djiError.getDescription());
+
                                 hideProcess();
                             }
                             @Override

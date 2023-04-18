@@ -23,7 +23,7 @@ public class PushBatteryDataView extends BasePushDataView {
                 @Override
                 public void onUpdate(BatteryState djiBatteryState) {
                     stringBuffer.delete(0, stringBuffer.length());
-
+                    
                     stringBuffer.append("BatteryEnergyRemainingPercent: ").
                         append(djiBatteryState.getChargeRemainingInPercent()).
                                     append("%\n");
