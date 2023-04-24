@@ -10,26 +10,17 @@ import androidx.annotation.NonNull;
 
 import com.dji.sdk.sample.R;
 
-
-/**
- * Created by dji on 15/12/28.
- */
-public abstract class BasePushDataView extends RelativeLayout implements PresentableView {
-
-    protected StringBuffer stringBuffer;
-
-    protected TextView textViewOSD;
-
-
-    public BasePushDataView(Context context) {
+public abstract class baseOwlView extends RelativeLayout implements PresentableView{
+    protected TextView owlHello;
+    protected StringBuffer owlLogger;
+    public baseOwlView(Context context){
         super(context);
         init(context);
     }
-
     @Override
     protected void onAttachedToWindow() {
         super.onAttachedToWindow();
-        stringBuffer = new StringBuffer();
+        owlLogger = new StringBuffer();
     }
 
     @NonNull
@@ -41,18 +32,17 @@ public abstract class BasePushDataView extends RelativeLayout implements Present
     private void init(Context context) {
         setClickable(true);
         LayoutInflater layoutInflater = (LayoutInflater) context.getSystemService(Service.LAYOUT_INFLATER_SERVICE);
+        layoutInflater.inflate(R.layout.view_owl, this, true);
 
-        layoutInflater.inflate(R.layout.view_show_osd, this, true);
-
-        textViewOSD = (TextView) findViewById(R.id.text_show_osd);
-        textViewOSD.setText(context.getString(getDescription()));
+        owlHello = (TextView) findViewById(R.id.owl_Hello);
+        owlHello.setText(context.getString(getDescription()));
     }
 
     protected void showStringBufferResult() {
         post(new Runnable() {
             @Override
             public void run() {;
-                textViewOSD.setText(stringBuffer.toString());
+                owlHello.setText(owlLogger.toString());
             }
         });
     }

@@ -65,8 +65,6 @@ public class WaypointMissionOperatorView extends MissionBaseView {
     private WaypointMission mission = null;
     private WaypointMissionOperatorListener listener;
     private float calculateTotalTime = 0.0f;
-
-
     public WaypointMissionOperatorView(Context context) {
         super(context);
     }

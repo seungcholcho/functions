@@ -364,4 +364,9 @@
 
     <string name="uas_view">UAS</string>
 
+    <string name="view_owl_view">Data logger</string>
+    <string name="input_lon">input data</string>
+    <string name="input_lat">input data</string>
+    <string name="input_alt">input data</string>
+
 </resources>

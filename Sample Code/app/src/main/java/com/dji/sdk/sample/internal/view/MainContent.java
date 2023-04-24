@@ -27,6 +27,7 @@ import android.widget.TextView;
 
 import com.dji.sdk.sample.R;
 import com.dji.sdk.sample.demo.bluetooth.BluetoothView;
+import com.dji.sdk.sample.demo.gimbal.PushGimbalDataView;
 import com.dji.sdk.sample.internal.controller.DJISampleApplication;
 import com.dji.sdk.sample.internal.controller.MainActivity;
 import com.dji.sdk.sample.internal.model.ViewWrapper;
@@ -107,7 +108,9 @@ public class MainContent extends RelativeLayout {
     private Button mBtnOpen;
     private Button mBtnBluetooth;
     private ViewWrapper componentList =
-            new ViewWrapper(new DemoListView(getContext()), R.string.activity_component_list);
+            //new ViewWrapper(new PushGimbalDataView(getContext()), R.string.view_owl_view);
+            //new ViewWrapper(new owl(getContext()), R.string.view_owl_view);
+            new ViewWrapper(new OwlMission(getContext()), R.string.view_owl_view);
     private ViewWrapper bluetoothView;
     private EditText mBridgeModeEditText;
     private CheckBox mCheckboxFirmware;
@@ -163,6 +166,7 @@ public class MainContent extends RelativeLayout {
             public void onClick(View v) {
                 isregisterForLDM = false;
                 checkAndRequestPermissions();
+                mBtnOpen.setEnabled(true);
             }
         });
         getmBtnRegisterAppForLDM.setOnClickListener(new OnClickListener() {
@@ -640,7 +644,6 @@ public class MainContent extends RelativeLayout {
                                 }
                             }
                         });
-
                     }
                 }
             });

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/owl_Hello"
+        android:textColor="@color/black"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="top"/>
+
+    <EditText
+        android:id="@+id/inputLat"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:inputType="numberDecimal"
+        android:hint="input latitude"
+        android:layout_below="@+id/owl_Hello"/>
+
+    <EditText
+        android:id="@+id/inputLon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:inputType="numberDecimal"
+        android:hint="input longitude"
+        android:layout_below="@+id/owl_Hello"
+        android:layout_toRightOf="@+id/inputLat"/>
+
+    <EditText
+        android:id="@+id/inputAlt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:inputType="numberDecimal"
+        android:hint="input altitude"
+        android:layout_toRightOf="@+id/inputLon"
+        android:layout_below="@+id/owl_Hello"/>
+
+
+
+</merge>
