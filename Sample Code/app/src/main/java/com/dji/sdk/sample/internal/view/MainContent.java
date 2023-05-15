@@ -152,10 +152,10 @@ public class MainContent extends RelativeLayout {
         mTextModelAvailable = (TextView) findViewById(R.id.text_model_available);
         mTextProduct = (TextView) findViewById(R.id.text_product_info);
         mBtnRegisterApp = (Button) findViewById(R.id.btn_registerApp);
-        getmBtnRegisterAppForLDM = (Button) findViewById(R.id.btn_registerAppForLDM);
+        //getmBtnRegisterAppForLDM = (Button) findViewById(R.id.btn_registerAppForLDM);
         mBtnOpen = (Button) findViewById(R.id.btn_open);
         mBridgeModeEditText = (EditText) findViewById(R.id.edittext_bridge_ip);
-        mBtnBluetooth = (Button) findViewById(R.id.btn_bluetooth);
+        //mBtnBluetooth = (Button) findViewById(R.id.btn_bluetooth);
         mCheckboxFirmware = (CheckBox) findViewById(R.id.checkbox_firmware);
 
         //mBtnBluetooth.setEnabled(false);
@@ -169,13 +169,6 @@ public class MainContent extends RelativeLayout {
                 mBtnOpen.setEnabled(true);
             }
         });
-        getmBtnRegisterAppForLDM.setOnClickListener(new OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                isregisterForLDM = true;
-                checkAndRequestPermissions();
-            }
-        });
         mBtnOpen.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -185,21 +178,8 @@ public class MainContent extends RelativeLayout {
                 DJISampleApplication.getEventBus().post(componentList);
             }
         });
-        mBtnBluetooth.setOnClickListener(new OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (GeneralUtils.isFastDoubleClick()) {
-                    return;
-                }
-                if (DJISampleApplication.getBluetoothProductConnector() == null) {
-                    ToastUtils.setResultToToast("pls wait the sdk initiation finished");
-                    return;
-                }
-                bluetoothView =
-                        new ViewWrapper(new BluetoothView(getContext()), R.string.component_listview_bluetooth);
-                DJISampleApplication.getEventBus().post(bluetoothView);
-            }
-        });
+
+
         mBridgeModeEditText.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             @Override
             public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {

@@ -34,7 +34,6 @@ public class OwlMission extends BaseOwlMissionView{
             FlightController flightController = ((Aircraft) DJISampleApplication.getProductInstance()).getFlightController();
             flightController.setStateCallback(new FlightControllerState.Callback() {
                 @Override
-
                 public void onUpdate(@NonNull FlightControllerState djiFlightControllerCurrentState) {
                     Date currentTime = Calendar.getInstance().getTime();
                     GPSSignalLevel GPSLevel = djiFlightControllerCurrentState.getGPSSignalLevel();
